@@ -3,6 +3,7 @@ import "./Login.css";
 import {
   SignInOrLoginwithGoogle,
   SignInOrLoginwithGitHub,
+  SignInOrLoginwithFacebook
 } from "../../Firebase/helper";
 import { useContext, useState } from "react";
 import { auth } from "../../Firebase/firebase.config";
@@ -52,6 +53,10 @@ const Login = () => {
 
   const handleGitHubSignIn = () => {
     SignInOrLoginwithGitHub({ setIsLoggedIn, toast, setLoader } , navigate , setUserData , setPenData);
+  };
+
+  const handleFacebookSignIn = () => {
+    SignInOrLoginwithFacebook({ setIsLoggedIn, toast, setLoader } , navigate , setUserData , setPenData);
   };
 
   return (
@@ -115,7 +120,7 @@ const Login = () => {
               </button>
             </div>
             <div className="facebook">
-              <button>
+              <button onClick={handleFacebookSignIn}>
                 <svg width="26" height="26" viewBox="0 0 14222 14222">
                   <circle cx="7111" cy="7112" r="7111" fill="#1977f3"></circle>
                   <path

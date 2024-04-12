@@ -1,7 +1,7 @@
 
 import { useContext, useState } from "react"
 import "./SignUp.css"
-import { SignInOrLoginwithGoogle , SignInOrLoginwithGitHub } from "../../Firebase/helper"
+import { SignInOrLoginwithGoogle , SignInOrLoginwithGitHub , SignInOrLoginwithFacebook } from "../../Firebase/helper"
 import { createUserWithEmailAndPassword  } from "firebase/auth"
 import { auth } from "../../Firebase/firebase.config"
 import { doc, setDoc } from "firebase/firestore";
@@ -47,6 +47,10 @@ const SignUp = () => {
     SignInOrLoginwithGitHub({ setIsLoggedIn, toast, setLoader } , navigate , setUserData , setPenData);
   };
 
+  const handleFacebookSignIn = () => {
+    SignInOrLoginwithFacebook({ setIsLoggedIn, toast, setLoader } , navigate , setUserData , setPenData);
+  };
+
 
   return (
     <div className="signupbox">
@@ -69,7 +73,7 @@ const SignUp = () => {
               </button>
             </div>
             <div className="facebook">
-               <button>
+               <button onClick={handleFacebookSignIn}>
                <svg width="26" height="26" viewBox="0 0 14222 14222"><circle cx="7111" cy="7112" r="7111" fill="#1977f3"></circle><path d="M9879 9168l315-2056H8222V5778c0-562 275-1111 1159-1111h897V2917s-814-139-1592-139c-1624 0-2686 984-2686 2767v1567H4194v2056h1806v4969c362 57 733 86 1111 86s749-30 1111-86V9168z" fill="#fff"></path></svg>
                   <p>Sign Up with Facebook</p>
                </button>
